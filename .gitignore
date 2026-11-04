@@ -1,0 +1,6 @@
+.agenthub/
+node_modules/
+.DS_Store
+*.agenthub-replaced-*
+.local/
+agents/*/memory.md

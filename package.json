@@ -1,0 +1,27 @@
+{
+  "name": "agenthub-core",
+  "version": "0.3.0",
+  "description": "AgentHubCore: a file-first, service-free role hub for Claude Code and Codex CLI.",
+  "type": "module",
+  "bin": {
+    "hub": "bin/hub.mjs"
+  },
+  "scripts": {
+    "test": "node --test --test-concurrency=1",
+    "smoke": "node scripts/smoke.mjs",
+    "scan": "node scripts/scan-private.mjs",
+    "parallel-check": "node scripts/parallel-check.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/layyyback/AgentHubCore.git"
+  },
+  "homepage": "https://github.com/layyyback/AgentHubCore#readme",
+  "bugs": {
+    "url": "https://github.com/layyyback/AgentHubCore/issues"
+  },
+  "license": "MIT"
+}

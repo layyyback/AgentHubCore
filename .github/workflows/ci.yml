@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm ci
+      - run: npm test
+      - name: Role cards match role sources
+        run: node bin/hub.mjs roles build --hub . && git diff --exit-code agents/
+      - name: Personal-data scan
+        # Without the secret the scan runs the generic rules only and says so in the log.
+        env:
+          HUB_SCAN_PATTERNS: ${{ secrets.HUB_SCAN_PATTERNS }}
+        run: npm run scan
